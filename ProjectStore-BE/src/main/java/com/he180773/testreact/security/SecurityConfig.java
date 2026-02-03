@@ -46,8 +46,8 @@ public class SecurityConfig {
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration config = new CorsConfiguration();
-//        config.setAllowedOrigins(List.of("https://leventstreetwear.id.vn")); http://localhost:3000/
-        config.setAllowedOrigins(List.of("http://localhost:3000"));
+////        config.setAllowedOrigins(List.of("https://leventstreetwear.id.vn")); http://localhost:3000/
+//        config.setAllowedOrigins(List.of("http://localhost:3000"));
         config.setAllowedOrigins(List.of("https://lienhoay.io.vn"));
         config.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE"));
         config.setAllowedHeaders(List.of("*"));
