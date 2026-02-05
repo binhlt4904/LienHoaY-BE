@@ -29,6 +29,8 @@ public class Product {
     private LocalDateTime createdAt;
     @Column(name = "created_by", nullable = true)
     private int createdBy;
+    @Column(name = "collection_id", nullable = true)
+    private Long collectionId;
 
     public Long getId() {
         return id;
@@ -100,5 +102,13 @@ public class Product {
 
     public void setCreatedBy(int createdBy) {
         this.createdBy = createdBy;
+    }
+
+    public Long getCollectionId() {
+        return collectionId;
+    }
+
+    public void setCollectionId(Long collectionId) {
+        this.collectionId = collectionId;
     }
 }

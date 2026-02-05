@@ -96,5 +96,5 @@ ORDER BY
 
     List<Product> findAllByNameContains(String name);
 
-
+    List<Product> findAllByCollectionId(Long id);
 }
