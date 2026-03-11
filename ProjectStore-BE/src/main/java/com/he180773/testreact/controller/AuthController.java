@@ -230,19 +230,29 @@ public class AuthController {
 
     @PostMapping("/resend-otp")
     public ResponseEntity<?> resendOtp(@RequestBody Map<String, String> body) {
+
         String email = body.get("email");
+
         if (email == null || email.trim().isEmpty()) {
-            return ResponseEntity.badRequest().body("Vui lòng nhập username hoặc email.");
+            return ResponseEntity.badRequest().body("Email không hợp lệ.");
         }
 
         User user = userRepository.findByUsername(email);
+
         if (user == null) {
-            user = userRepository.findByEmail(email).get();
+            Optional<User> userOpt = userRepository.findByEmail(email);
+            if (userOpt.isEmpty()) {
+                return ResponseEntity.status(404).body("Không tìm thấy tài khoản.");
+            }
+            user = userOpt.get();
         }
-        if (user.isVerified())
+
+        if (user.isVerified()) {
             return ResponseEntity.status(400).body("Tài khoản đã xác thực!");
+        }
 
         emailService.sendOtp(user.getEmail());
+
         return ResponseEntity.ok("OTP đã được gửi lại.");
     }
 
