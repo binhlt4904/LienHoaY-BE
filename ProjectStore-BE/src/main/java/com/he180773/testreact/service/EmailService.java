@@ -18,7 +18,7 @@ public class EmailService {
     @Value("${BREVO_API_KEY}")
     private String apiKey;
 
-    private final String FROM_EMAIL = "leventshop@gmail.com";
+    private final String FROM_EMAIL = "leventstreetwear@gmail.com";
     private final String FROM_NAME = "Levents";
 
     public EmailService(OtpVerificationRepository otpRepo) {
